@@ -3,13 +3,13 @@ import csv
 import shutil
 
 
-def make_new_dataset(new_dataset_path):
-    os.mkdir(new_dataset_path)
+def make_new_dataset():
+    os.mkdir("new_dataset")
 
 
 def copy_dataset(path):
-    new_dataset_path = "./new_dataset"
-    make_new_dataset(new_dataset_path)
+    make_new_dataset()
+    new_dataset_path = os.path.abspath("../application_programming_l2/new_dataset")
     for num_of_folder in range(1,6):
         path_to_folder = os.path.join(path, str(num_of_folder))
         num_of_files = sum(os.path.isfile(os.path.join(path_to_folder, f))
