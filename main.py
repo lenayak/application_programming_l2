@@ -2,6 +2,7 @@ import os
 
 import first_script
 import second_script
+import third_script
 
 
 if __name__ == "__main__":
@@ -10,3 +11,7 @@ if __name__ == "__main__":
     first_script.write_as_csv(path, path_to_files)
     new_dataset_path = second_script.copy_dataset(path)
     second_script.write_as_csv(new_dataset_path, path_to_files)
+    third_script.create_copy(path)
+    copy_dataset_path = os.path.abspath("../application_programming_l2/copy_dataset")
+    path_to_files1 = third_script.get_path_to_files(copy_dataset_path)
+    third_script.write_as_csv(copy_dataset_path, path_to_files)
