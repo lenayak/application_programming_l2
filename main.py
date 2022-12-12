@@ -14,4 +14,4 @@ if __name__ == "__main__":
     third_script.create_copy(path)
     copy_dataset_path = os.path.abspath("../application_programming_l2/copy_dataset")
     path_to_files1 = third_script.get_path_to_files(copy_dataset_path)
-    third_script.write_as_csv(copy_dataset_path, path_to_files)
+    third_script.write_as_csv(copy_dataset_path, path_to_files1)
