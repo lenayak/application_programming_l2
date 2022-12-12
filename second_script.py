@@ -31,3 +31,21 @@ def write_as_csv(path, path_to_files):
                              f"dataset{p}", f"{p[1]}"])
 
 
+def get_path_to_files(path):
+    path_to_files = []
+    for num_of_folder in range(1,6):
+        path_to_folder = os.path.join(path, str(num_of_folder))
+        num_of_files = sum(os.path.isfile(os.path.join(path_to_folder, f))
+                           for f in os.listdir(path_to_folder)) + 1
+        for i in range(1, num_of_files):
+            path_to_file = os.path.join(path_to_folder, f"{(i):04}.txt")
+            print(f"{num_of_folder}:{(i):04}")
+            path_to_files.append(path_to_file[len(path):])
+    return path_to_files
+
+
+if __name__ == "__main__":
+    path = os.path.abspath("../application_programming_l1/dataset")
+    path_to_files = get_path_to_files(path)
+    new_dataset_path = copy_dataset(path)
+    write_as_csv(new_dataset_path, path_to_files)

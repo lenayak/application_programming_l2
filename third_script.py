@@ -105,3 +105,9 @@ def write_as_csv(path, path_to_files):
                              os.path.relpath(path_to_files[i],start=os.path.join("Рабочий стол", "application_programming", "application_programming_l2")), os.path.basename(path_to_files[i])])
 
 
+if __name__ == "__main__":
+    path = os.path.abspath("../application_programming_l1/dataset")
+    create_copy(path)
+    copy_dataset_path = os.path.abspath("../application_programming_l2/copy_dataset")
+    path_to_files1 = get_path_to_files(copy_dataset_path)
+    write_as_csv(copy_dataset_path, path_to_files1)

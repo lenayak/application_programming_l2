@@ -22,3 +22,8 @@ def get_path_to_files(path):
             path_to_files.append(path_to_file[len(path):])
     return path_to_files
 
+
+if __name__ == "__main__":
+    path = os.path.abspath("../application_programming_l1/dataset")
+    path_to_files = get_path_to_files(path)
+    write_as_csv(path, path_to_files)
