@@ -2,7 +2,7 @@ import os
 
 
 class SimpleIterator:
-    def __init__(self, limit):
+    def __init__(self, limit: int) -> None:
         self.limit = limit
         self.counter = 0
 

@@ -3,11 +3,13 @@ import csv
 import shutil
 
 
-def make_new_dataset():
+def make_new_dataset() -> None:
+    '''Create folder with name:"new_dataset"'''
     os.mkdir("new_dataset")
 
 
-def copy_dataset(path):
+def copy_dataset(path: str) -> str:
+    '''Copies dataset into the new direct'''
     make_new_dataset()
     new_dataset_path = os.path.abspath("../application_programming_l2/new_dataset")
     for num_of_folder in range(1,6):
@@ -21,7 +23,8 @@ def copy_dataset(path):
 
 
 
-def write_as_csv(path, path_to_files):
+def write_as_csv(path: str, path_to_files: str) -> None:
+    '''Writes path to files in CSV file'''
     with open("annotation1.csv", mode="w", encoding="utf-8") as csvfile:
         writer = csv.writer(csvfile, delimiter=",")
         writer.writerow(["Absolute path", "Relative path", "Class"])
@@ -31,7 +34,8 @@ def write_as_csv(path, path_to_files):
                              f"dataset{p}", f"{p[1]}"])
 
 
-def get_path_to_files(path):
+def get_path_to_files(path: str) -> str:
+    '''Get path to files from dataset'''
     path_to_files = []
     for num_of_folder in range(1,6):
         path_to_folder = os.path.join(path, str(num_of_folder))

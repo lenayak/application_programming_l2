@@ -11,13 +11,15 @@ class Review:
         self.mark = None
 
 
-def create_folder():
+def create_folder() -> None:
+    '''Create folder for copy dataset'''
     os.mkdir("copy_dataset")
     for i in range(1,6):
         os.mkdir("copy_dataset/" + str(i))
 
 
-def save_reviews(data, filename):      
+def save_reviews(data: Review, filename: str) -> None:
+    '''Save reviews into copy dataset'''      
     for i in range(1,len(data)):
         numbers = [0]
         random = Random()
@@ -32,7 +34,8 @@ def save_reviews(data, filename):
         numbers.append(number)
 
 
-def get_dataset(path):                     
+def get_dataset(path: str) -> str:
+    '''Read all files in dataset and returns it as Review class objects'''                     
     dataset = list()
     for num_of_folder in range(1,6):
         path_to_folder = os.path.join(path, str(num_of_folder))
@@ -65,13 +68,14 @@ def get_dataset(path):
     return dataset
 
 
-def create_copy(path):
+def create_copy(path: str) -> None:
     dataset = get_dataset(path)
     create_folder()
     write_dataset(dataset)      
 
 
-def write_dataset(dataset):     
+def write_dataset(dataset: Review) -> None:
+    '''Writes dataset'''     
     one_data = [el for el in dataset if el.mark < 1.5]
     save_reviews(one_data, "copy_dataset/1")
     two_data = [el for el in dataset if (el.mark >= 1.5) and (el.mark < 2.5)]
@@ -84,7 +88,8 @@ def write_dataset(dataset):
     save_reviews(five_data, "copy_dataset/5")
 
 
-def get_path_to_files(path):     
+def get_path_to_files(path: str) -> str:
+    '''Get path to files from dataset'''     
     path_to_files = []
     for num_of_folder in range(1,6):
         path_to_folder = os.path.join(path, str(num_of_folder))
@@ -95,7 +100,8 @@ def get_path_to_files(path):
     return path_to_files
 
 
-def write_as_csv(path, path_to_files):    
+def write_as_csv(path: str, path_to_files: str) -> None:
+    '''Writes path to files in CSV file'''    
     with open("annotation2.csv", mode="w", encoding="utf-8") as csvfile:
         writer = csv.writer(csvfile, delimiter=",")
         writer.writerow(["Absolute path", "Relative path", "Class"])

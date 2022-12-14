@@ -1,7 +1,8 @@
 import os
 
 
-def get_next_exemplar(mark, id):
+def get_next_exemplar(mark: int, id: int) -> str:
+    '''Returns name of next file'''
     return  os.path.abspath("..\\application_programming_l1\\dataset" + f"\\{mark}" + f"\\{id:04}.txt")
 
 
