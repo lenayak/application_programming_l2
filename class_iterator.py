@@ -1,4 +1,5 @@
 import os
+from typing import Optional
 
 
 class SimpleIterator:
@@ -6,13 +7,13 @@ class SimpleIterator:
         self.limit = limit
         self.counter = 0
 
-    def __get_next__(self, mark):
+    def __get_next__(self, mark) -> Optional[str]:
         if self.counter >= self.limit:
             return None
         self.counter += 1
         return os.path.abspath("../application_programmind_l1/dataset" + f"/{mark}" + f"/{self.counter:04}.txt")
 
-    def __next__(self):
+    def __next__(self) -> Optional[str]:
         if self.counter < self.limit:
             self.counter += 1
             return 1

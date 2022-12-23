@@ -5,7 +5,8 @@ import shutil
 
 def make_new_dataset() -> None:
     '''Create folder with name:"new_dataset"'''
-    os.mkdir("new_dataset")
+    if not os.path.isdir("new_dataset"):
+        os.mkdir("new_dataset")
 
 
 def copy_dataset(path: str) -> str:

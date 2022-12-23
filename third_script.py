@@ -13,9 +13,11 @@ class Review:
 
 def create_folder() -> None:
     '''Create folder for copy dataset'''
-    os.mkdir("copy_dataset")
+    if not os.path.isdir("copy_dataset"):
+        os.mkdir("copy_dataset")
     for i in range(1,6):
-        os.mkdir("copy_dataset/" + str(i))
+        if not os.path.isdir("copy_dataset/" + str(i)):
+            os.mkdir("copy_dataset/" + str(i))
 
 
 def save_reviews(data: Review, filename: str) -> None:
